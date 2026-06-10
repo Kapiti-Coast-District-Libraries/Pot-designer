@@ -64,14 +64,14 @@ export const Viewport: React.FC<ViewportProps> = ({ params, color, showAnalysis 
   const geometry = useMemo(() => buildPotGeometry(params), [params]);
 
   return (
-    <div className="w-full h-full bg-[#151619] rounded-xl overflow-hidden border border-[#2A2B2F] shadow-2xl relative">
+    <div className="w-full h-full bg-slate-50 rounded-xl overflow-hidden border border-slate-200 shadow-lg relative">
       <Canvas camera={{ position: [150, 150, 150], fov: 45 }} shadows>
-        <color attach="background" args={['#151619']} />
+        <color attach="background" args={['#f8fafc']} />
         
-        <ambientLight intensity={0.7} />
-        <hemisphereLight intensity={0.4} color="#ffffff" groundColor="#444444" />
-        <spotLight position={[100, 200, 100]} angle={0.3} penumbra={1} intensity={2} castShadow />
-        <pointLight position={[-100, 100, -100]} intensity={1} color="#4444ff" />
+        <ambientLight intensity={0.9} />
+        <hemisphereLight intensity={0.5} color="#ffffff" groundColor="#e2e8f0" />
+        <spotLight position={[100, 200, 100]} angle={0.3} penumbra={1} intensity={2.5} castShadow />
+        <pointLight position={[-100, 100, -100]} intensity={1.2} color="#bfdbfe" />
         
         <group position={[0, 0, 0]}>
           <mesh geometry={geometry} castShadow receiveShadow>
@@ -113,12 +113,12 @@ export const Viewport: React.FC<ViewportProps> = ({ params, color, showAnalysis 
           fadeStrength={5}
           cellSize={10}
           sectionSize={50}
-          sectionColor="#2A2B2F"
-          cellColor="#1E1F23"
+          sectionColor="#cbd5e1"
+          cellColor="#e2e8f0"
         />
         
         <ContactShadows 
-          opacity={0.4} 
+          opacity={0.3} 
           scale={200} 
           blur={2.4} 
           far={10} 
@@ -130,7 +130,7 @@ export const Viewport: React.FC<ViewportProps> = ({ params, color, showAnalysis 
         <Environment preset="city" />
       </Canvas>
       
-      <div className="absolute bottom-4 left-4 text-[10px] font-mono text-[#8E9299] uppercase tracking-wider bg-[#151619]/80 px-2 py-1 rounded border border-[#2A2B2F]">
+      <div className="absolute bottom-4 left-4 text-[10px] font-mono text-slate-500 uppercase tracking-wider bg-white/95 px-3 py-1.5 rounded-lg border border-slate-200/80 shadow-sm">
         Viewport: 1 Unit = 1mm
       </div>
     </div>
